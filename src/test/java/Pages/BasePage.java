@@ -195,4 +195,15 @@ public class BasePage {
         alert.sendKeys(data);
     }
 
+    public boolean isAlertPresent() {
+        try {
+            WebDriverWait wait = new WebDriverWait(Web.getDriver(), 10);
+            wait.until(ExpectedConditions.alertIsPresent());
+            Web.getDriver().switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
 }
